@@ -1,0 +1,58 @@
+<!--
+  Generated template for the InfoProductoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+        <button ion-button (click)="cerrar()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>{{'TITLEPRODUCTO' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngFor="let obj of producto" padding>
+    <h1>{{obj.nombre}}</h1>
+    <ion-slides pager="true">
+      <ion-slide  *ngFor="let img of imagenes">
+        <img src="{{host}}/productos/{{img.url}}"/>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/imagen-no-encontrada.png"/>
+      </ion-slide>
+    </ion-slides>
+    <h4>{{'DESCPROD' | translate}}</h4>
+    <p>{{obj.desc_larga}}</p>
+    <audio src="{{host}}/recursos/audio/1.mp3" *ngIf="obj.id==6" controls="controls"></audio>
+    <h5><b>{{'PRECIO' | translate}}</b> ${{obj.precio_venta}}</h5>
+    <ion-item>
+      <ion-label floating>{{'CANTPROD' | translate}}</ion-label>
+      <ion-input type="number" min="1" [(ngModel)]="value"></ion-input>  
+    </ion-item>
+    <br>
+    <button ion-button icon-left round block (click)="addCarrito(obj.id)">
+        <ion-icon name="cart"></ion-icon>
+        {{'ADDCARRITO' | translate}}
+      </button>
+    <br><br>
+    <h2>{{'TITLEMAP' | translate}}</h2>
+    <button ion-item (click)="irMapa()">
+      <ion-avatar item-left>
+        <img src="assets/img/maps.png">
+      </ion-avatar>
+      <h3>{{'IRMAP' | translate}}</h3>
+      <div *ngFor="let obj1 of lugarorigen">
+        <h5>{{obj1.nombre}}</h5>
+      </div>
+      
+    </button>
+  </div>
+</ion-content>

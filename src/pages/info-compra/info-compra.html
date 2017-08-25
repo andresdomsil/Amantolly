@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'TITLEINFOCOMPR' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      {{"PRODUCTOS" | translate}}
+    </ion-list-header>
+    <ion-item *ngFor="let car of carrito" >
+        <ion-thumbnail item-left>
+          <img src="{{host}}/productos/{{car.url}}">
+        </ion-thumbnail>
+        <p>{{car.nombre}}</p>
+        <p>{{'CANTPROD' | translate}}: {{car.cantidad}}</p>
+        <p>Total: {{car.cantidad}}x{{car.precio_venta}} = ${{(car.cantidad*car.precio_venta)}}</p>
+    </ion-item>
+  </ion-list>
+  <h5>Subtotal: ${{subtotal}}</h5>
+  <hr><br>
+  <ion-list>
+    <ion-list-header>
+      {{"DIRECCIONENVIO" | translate}}
+    </ion-list-header>
+    <ion-item *ngFor="let item of direccion">
+      <ion-label>{{item.domicilio}} <br>{{item.ciudad}}, {{item.codigo_postal}} <br>{{item.estado}} <br>{{item.pais}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <hr><br>
+  <ion-list>
+    <ion-list-header>
+      {{"DATOSUSER" | translate}}
+    </ion-list-header>
+    <ion-item>
+      <p>{{'NAMEC' | translate}}: {{nombre}}</p>
+      <p>{{'TELEFONO' | translate}}: {{tel}}</p>
+      <p>{{'RFC' | translate}}: {{rfc}}</p>
+    </ion-item>
+  </ion-list>
+  <hr>
+  <button ion-button block round color="dark">{{'PAYNOW' | translate}}</button>
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'PRODUCTOS' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--<h6>{{id_session}}</h6>-->
+  <ion-card *ngFor="let item of productos">
+    <img src="{{host}}/productos/{{item.url}}" (click)="InfoProductoPage(item.id)">
+    <ion-card-content>
+    <div (click)="InfoProductoPage(item.id)" class="tituloProducto">
+      <h1>{{item.nombre}}</h1>
+    </div>
+    
+    <p>{{item.desc_corta}}</p>
+    <h4>{{'PRECIO' | translate}} ${{item.precio_venta}} MXN</h4>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear block small (click)="addCarrito(item.id)" >
+          <ion-icon name="cart"></ion-icon>
+          <div>{{'ADDCARRITO' | translate}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

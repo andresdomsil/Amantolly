@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'REGISTRARSE' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content> 
+  <img class="img-logo" src="assets/img/Amantolly.png">
+      <h2>{{'TITLE' | translate}}</h2>
+    <ion-item>
+      <ion-label floating>{{'NAME' | translate}}</ion-label>
+      <ion-input type="text" [(ngModel)]="nameuser"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>{{'EMAIL' | translate}}</ion-label>
+      <ion-input type="email" [(ngModel)]="emailuser"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>{{'PASS' | translate}}</ion-label>
+      <ion-input type="password" [(ngModel)]="passuser"></ion-input>
+    </ion-item>
+  <br>
+  <div class="botones-login">
+    <button ion-button (click)="registrar()">{{'REGISTRARSE' | translate}}</button>
+  </div>
+  <hr>
+  <p>{{'OPCION' | translate}}</p>
+  <ion-grid>
+    <ion-row>
+      <img col-6 src="assets/img/rs/facebook.png" (click)="loginFB()">
+      <img col-6 src="assets/img/rs/googleplus.png" (click)="loginGP()">
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ConfigPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{"CONFIG" | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-list>
+    <ion-list-header>
+      {{"APP" | translate}}
+    </ion-list-header>
+    <button ion-item (click)="ir('Home')" icon-right>{{"LENGUAJE" | translate}}
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      {{"DATOSUSER" | translate}}
+    </ion-list-header>
+    <button ion-item (click)="ir('Direccion')" icon-right>{{"DIRECCION" | translate}}
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+    <button ion-item (click)="ir('InfoUser')" icon-right>{{"INFOUSER" | translate}}
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,37 @@
+<!--
+  Generated template for the BusquedaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle="left" start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Busqueda de productos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let item of productos">
+    <img src="http://sedely.com.mx/amantolly/productos/{{item.url}}" (click)="InfoProductoPage(item.id)">
+    <ion-card-content>
+    <div (click)="InfoProductoPage(item.id)" class="tituloProducto">
+      <h1>{{item.nombre}}</h1>
+    </div>
+    
+    <p>{{item.descrip_corta}}</p>
+    <h4>Precio: ${{item.precio_venta}}</h4>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="addCarrito(item.id)" >
+          <ion-icon name="cart"></ion-icon>
+          <div>Añadir a carrito de compras</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

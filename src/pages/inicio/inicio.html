@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{"BIENVENIDO" | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <img src="assets/img/Amantolly.png" style="width: 100%;padding: 0em 2em"/>
+    <div class="introduccion">
+      <h1>{{'BIENVENIDAINICIO' | translate}}</h1>
+      <p>{{'DESCRIPINICIO' | translate}}</p>
+    </div>
+    <button ion-item (click)="abrirCamara()" block>
+        <ion-avatar item-left>
+          <img src="assets/img/camara.png">
+        </ion-avatar>
+        <h2>{{'BUSCARFOTOTITE' | translate}}</h2>
+        <p>{{'BUSCARFOTODESC' | translate}}</p>
+    </button>
+</ion-content>
