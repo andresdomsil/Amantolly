@@ -1,6 +1,6 @@
 {
     "name": "Amantolly",
-    "version": "0.0.3",
+    "version": "0.2",
     "author": "Sedely",
     "homepage": "http://sedely.com.mx/",
     "private": true,
@@ -26,11 +26,14 @@
         "@ionic-native/geolocation": "^3.11.0",
         "@ionic-native/google-maps": "^3.11.0",
         "@ionic-native/google-plus": "^4.1.0",
+        "@ionic-native/paypal": "^4.1.0",
         "@ionic-native/splash-screen": "3.10.2",
         "@ionic-native/status-bar": "3.10.2",
         "@ionic/storage": "^2.0.1",
         "@ngx-translate/core": "^7.0.0",
         "@ngx-translate/http-loader": "^0.1.0",
+        "card.io.cordova.mobilesdk": "^2.1.0",
+        "com.paypal.cordova.mobilesdk": "^3.5.0",
         "cordova-android": "^6.2.3",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-camera": "^2.4.1",
@@ -80,7 +83,8 @@
                 "REVERSED_CLIENT_ID": "324831155332-brg1ovp73pqth0ncc84a4repvrkgrd8l.apps.googleusercontent.com"
             },
             "cordova-plugin-compat": {},
-            "cordova-plugin-camera": {}
+            "cordova-plugin-camera": {},
+            "com.paypal.cordova.mobilesdk": {}
         },
         "platforms": [
             "android"

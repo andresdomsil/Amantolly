@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, Events } from 'ionic-angular';
 import { Http } from '@angular/http';
@@ -11,13 +12,37 @@ export class ListPage {
   public host="http://sedely.com.mx/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
   public productos: any[];
+  public myInput: any;
+  public cabeza:any;
+  public sub:any;
 
-  constructor(public e: Events, public navCtrl: NavController, public navParams: NavParams, public http: Http, public toast: ToastController) {
+  constructor(
+    public e: Events,
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public http: Http, 
+    public toast: ToastController,
+    public translate: TranslateService
+  ) {
+    this.translate.get('CABEZA1').subscribe(val=>{
+      this.cabeza=val;
+    });
     var link = this.host+'/controllers/productosController.php?op=1';
     http.get(link)
             .subscribe(data => {
               this.productos=data.json();
             });
+  }
+
+  buscar(){
+    this.translate.get('CABEZA2').subscribe(val=>{
+      this.cabeza=val;
+      var link = this.host+'/controllers/productosController.php?op=6&sub='+this.sub;
+      this.http.get(link)
+              .subscribe(data => {
+                this.productos=data.json();
+              });
+    });
   }
 
   InfoProductoPage(id){

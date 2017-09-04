@@ -24,6 +24,7 @@ import { FormdireccionesPage } from '../pages/formdirecciones/formdirecciones';
 import { InfoProductoPage } from '../pages/info-producto/info-producto';
 import { InfoUserPage } from '../pages/info-user/info-user';
 import { InfoCompraPage } from '../pages/info-compra/info-compra';
+import { PagoPaypalPage } from '../pages/pago-paypal/pago-paypal';
 import { HttpModule, Http } from "@angular/http";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,6 +35,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Camera } from '@ionic-native/camera';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { PayPal } from '@ionic-native/paypal';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
     DireccionesPage,
     InfoUserPage,
     InfoCompraPage,
+    PagoPaypalPage,
     FormdireccionesPage
   ],
   imports: [
@@ -88,6 +91,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
     DireccionesPage,
     InfoUserPage,
     InfoCompraPage,
+    PagoPaypalPage,
     FormdireccionesPage
   ],
   providers: [
@@ -99,6 +103,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
     GooglePlus,
     Camera,
     MyApp,
+    PayPal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

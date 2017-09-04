@@ -22,6 +22,7 @@
     "CAMPINCOMPLETOS"   : "Campos incompletos. Por favor rellena todos los campos",
     "CARRITOPEDIDO"     : "Hacer el pedido",
     "PAYNOW"            : "Realizar pago",
+    "BUSCAR"            : "Buscar",
 
     "__comment3"     : "-----Lenguajes de la aplicacion-----",
     "ES"            : "Español",
@@ -58,6 +59,8 @@
     "__comment9"          : "-----Pagina Productos-----",
     "PRECIO"              : "Precio:",
     "ADDCARRITO"          : "Añadir a carrito de compras",
+    "CABEZA1"             : "Productos nuevos y destacados",
+    "CABEZA2"             : "Resultado de búsqueda",
     
     "__comment10"          : "-----Pagina info Producto-----",
     "TITLEPRODUCTO"        : "Producto",
@@ -99,6 +102,9 @@
     "NAMEC"                : "Nombre",
     
     "__comment16"          : "-----Pagina Carrito de compras-----",
-    "CARRITOVACIO"         : "Carrito de compras vacio"
+    "CARRITOVACIO"         : "Carrito de compras vacio",
+    
+    "__comment17"          : "-----Pagina Paypal alertas-----",
+    "ALERT1"               : "Error, por favor intentelo mas tarde"
        
 }

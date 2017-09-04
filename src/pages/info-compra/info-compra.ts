@@ -1,3 +1,4 @@
+import { PagoPaypalPage } from './../pago-paypal/pago-paypal';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
@@ -81,6 +82,10 @@ export class InfoCompraPage {
       this.rfc=val;
     });
     this.actualizarCarrito();
+  }
+
+  pago(){
+    this.navCtrl.push(PagoPaypalPage);
   }
 
 

@@ -22,6 +22,7 @@
     "CAMPINCOMPLETOS"   : "Incomplete fields. Please fill in all fields",
     "CARRITOPEDIDO"     : "Make to order",
     "PAYNOW"            : "Pay now",
+    "BUSCAR"            : "Search",
 
     "__comment3"     : "-----name languages------",
     "ES"            : "Spanish",
@@ -58,6 +59,8 @@
     "__comment9"            : "-----Page Products-----",
     "PRECIO"                : "Price:",
     "ADDCARRITO"            : "Add to shopping cart",
+    "CABEZA1"               : "New and Featured Products",
+    "CABEZA2"               : "Search result",
 
     "__comment10"          : "-----Page info Product-----",
     "TITLEPRODUCTO"        : "Product",
@@ -99,6 +102,9 @@
     "NAMEC"                : "Name",
     
     "__comment16"          : "-----Pagina Carrirto de compras-----",
-    "CARRITOVACIO"         : "Shopping Cart Empty"
+    "CARRITOVACIO"         : "Shopping Cart Empty",
+    
+    "__comment17"          : "-----Pagina Paypal alertas-----",
+    "ALERT1"               : "Error, please try again later."
     
 }
