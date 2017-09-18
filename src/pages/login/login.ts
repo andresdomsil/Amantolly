@@ -22,7 +22,7 @@ export class LoginPage {
   public emailuser:any;
   public passuser:any;
   public nombre:any;
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
   public titulo:any;
   public mensaje:any;
   public BA:any;

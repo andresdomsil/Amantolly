@@ -26,7 +26,7 @@ export class InfoCompraPage {
   public carrito: any[]=[];
   public direccion:any[];
   public infoUser:any[];
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   constructor(

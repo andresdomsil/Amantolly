@@ -14,7 +14,7 @@ export class PagoPaypalPage {
 
   public precio:any;
   public alert:any;
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   constructor(

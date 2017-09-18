@@ -9,7 +9,7 @@ import { InfoProductoPage } from '../info-producto/info-producto';
   templateUrl: 'list.html'
 })
 export class ListPage {
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
   public productos: any[];
   public myInput: any;

@@ -40,7 +40,7 @@ export class MyApp {
   public user: any;
   public correo: any;
   public txt_carrito: any;
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   pages: Array<{title: string, component: any}>;

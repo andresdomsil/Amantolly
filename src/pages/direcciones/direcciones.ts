@@ -28,7 +28,7 @@ export class DireccionesPage {
   public cancel:any;
   public acept:any;
   public op:any;
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
 
   constructor(
     public storage: Storage, 

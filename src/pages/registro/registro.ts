@@ -20,7 +20,7 @@ export class RegistroPage {
   public nameuser:any;
   public emailuser:any;
   public passuser:any;
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
   public resp:any;
   public resp1:any;
 

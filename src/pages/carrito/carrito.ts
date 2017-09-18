@@ -21,7 +21,7 @@ export class CarritoPage {
   public cart:any[];
   public subtotal:any;
   public carrito: any[]=[];
-  public host="http://sedely.com.mx/amantolly";
+  public host="http://azahareseventos-slp.com/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   constructor(
