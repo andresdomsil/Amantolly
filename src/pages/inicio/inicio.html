@@ -23,4 +23,8 @@
         <h2>{{'BUSCARFOTOTITE' | translate}}</h2>
         <p>{{'BUSCARFOTODESC' | translate}}</p>
     </button>
+    <h3>Respuestas: </h3>
+    <div *ngFor="let i of respuestas">
+      <h4>{{i.description}}</h4>
+    </div>
 </ion-content>

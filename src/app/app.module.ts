@@ -36,6 +36,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { Camera } from '@ionic-native/camera';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { PayPal } from '@ionic-native/paypal';
+import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { PayPal } from '@ionic-native/paypal';
     Camera,
     MyApp,
     PayPal,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GoogleCloudVisionServiceProvider
   ]
 })
 export class AppModule {}
