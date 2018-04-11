@@ -26,7 +26,7 @@ export class InfoCompraPage {
   public carrito: any[]=[];
   public direccion:any[];
   public infoUser:any[];
-  public host="http://azahareseventos-slp.com/amantolly";
+  public host="http://sedely.mx/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   constructor(
@@ -85,7 +85,10 @@ export class InfoCompraPage {
   }
 
   pago(){
-    this.navCtrl.push(PagoPaypalPage);
+    this.navCtrl.push(PagoPaypalPage,{
+      id : this.direccion[0]
+    });
+
   }
 
 

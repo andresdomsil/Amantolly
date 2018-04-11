@@ -1,3 +1,5 @@
+import { ListPage } from './../list/list';
+import { GoogleCloudTranslateServiceProvider } from './../../providers/google-cloud-translate-service/google-cloud-translate-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -27,6 +29,7 @@ export class InicioPage {
     public navParams: NavParams, 
     public camera: Camera,
     private vision: GoogleCloudVisionServiceProvider,
+    private trad: GoogleCloudTranslateServiceProvider
   ) {
   }
 
@@ -42,8 +45,14 @@ export class InicioPage {
     }
     this.camera.getPicture(opciones).then((imageData)=>{
       this.vision.getLabels(imageData).subscribe((result) => {
-        this.respuestas=result.json().responses[0].labelAnnotations;
-        alert('Respuestas: '+result.json().responses[0].labelAnnotations[0].description);
+        this.trad.traducir(result.json().responses[0].labelAnnotations[0].description).subscribe((res)=>{
+          this.respuestas=res.json().data.translations[0].translatedText;
+          this.navCtrl.setRoot(ListPage,{
+            busqueda: this.respuestas
+          });
+        }, err=>{
+          alert('Error de google traductor: '+err);
+        });
       }, err => {
         alert('Error de google Vision: '+err);
       });

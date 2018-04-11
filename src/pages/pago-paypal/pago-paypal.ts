@@ -1,7 +1,8 @@
+import { PedidosPage } from './../pedidos/pedidos';
 import { TranslateService } from '@ngx-translate/core';
 import { Http } from '@angular/http';
-import { CorrectoPage } from './../correcto/correcto';
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
@@ -14,7 +15,8 @@ export class PagoPaypalPage {
 
   public precio:any;
   public alert:any;
-  public host="http://azahareseventos-slp.com/amantolly";
+  public user:any;
+  public host="http://sedely.mx/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   constructor(
@@ -23,7 +25,8 @@ export class PagoPaypalPage {
     public payPal: PayPal,
     public e: Events,
     public http: Http,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public storage: Storage
   ) {
     this.translate.get('ALERT1').subscribe(val=>{
       this.alert=val;
@@ -52,8 +55,16 @@ export class PagoPaypalPage {
       })).then(() => {
         let payment = new PayPalPayment(this.precio, 'MXN', 'Compra de artesanias Amantolly Souvenirs', 'sale',);
         this.payPal.renderSinglePaymentUI(payment).then(() => {
-          
-          alert('Gracias por su compra!!');
+          var dom=this.navParams.get('id');
+          this.storage.get('iduser').then(val=>{
+            this.user=val;
+            var link= this.host+this.carr+"?op=6&user="+this.user+"&dom="+dom.id;
+            this.http.get(link)
+              .subscribe(data=>{
+                alert('Gracias por su compra!!');
+                this.navCtrl.setRoot(PedidosPage);
+              });
+          });
         }, (err) => {
           alert(this.alert);// Error or render dialog closed without being successful
         });

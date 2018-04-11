@@ -24,7 +24,7 @@ export class InfoUserPage {
   public iduser:any;
   public datosUser:any[];
   public correo:any;
-  public host="http://azahareseventos-slp.com/amantolly";
+  public host="http://sedely.mx/amantolly";
 
   constructor(
     public navCtrl: NavController, 

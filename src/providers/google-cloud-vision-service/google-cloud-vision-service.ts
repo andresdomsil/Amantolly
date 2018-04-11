@@ -23,14 +23,10 @@ export class GoogleCloudVisionServiceProvider {
           },
           "features": [
             {
-              "type": "LABEL_DETECTION"
+              "type": "LABEL_DETECTION",
+              "maxResults":1
             }
-          ],
-          "imageContext": {
-            "languageHints": [
-              "es"
-            ]
-          }
+          ]
         }
       ]
     }

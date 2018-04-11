@@ -3,13 +3,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import {
  GoogleMaps,
- GoogleMap,
  GoogleMapsEvent,
+ GoogleMapOptions,
  LatLng,
  MarkerOptions,
- Marker
+ Marker,
+ GoogleMap
 } from '@ionic-native/google-maps';
 
+declare var google;
 /**
  * Generated class for the MapaPage page.
  *
@@ -29,7 +31,12 @@ export class MapaPage {
   public map            : any;
   public markerLocation : LatLng;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation,public googleMaps: GoogleMaps) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public geolocation: Geolocation,
+    public googleMaps: GoogleMaps
+  ) {
   }
 
   ionViewDidEnter() {
@@ -44,18 +51,6 @@ export class MapaPage {
     .catch(error =>{
       console.log(error);
     });
-  }
-
-  maker(lat,lon){
-    this.markerLocation = new LatLng(lat,lon);
-    let markerOptions   : MarkerOptions = {
-      position: this.markerLocation,
-      title: this.title,
-      icon : "green"
-    }
-    this.map.addMarker(markerOptions).then((marker : Marker)=>{
-      marker.showInfoWindow();
-    }).catch(err => console.log(err));
   }
 
   loadMap(){
@@ -74,7 +69,10 @@ export class MapaPage {
         'zoom'    : true
       },
       'camera':{
-        'latLng'  :myPosition,
+        'target': {
+            lat: this.corDesLat,
+            lng: this.corDesLon
+          },
         'tilt'    :30,
         'zoom'    :14,
         'bearing' :50
@@ -84,6 +82,79 @@ export class MapaPage {
     this.map.on(GoogleMapsEvent.MAP_READY).subscribe(()=> this.maker(this.corDesLat,this.corDesLon) );
 
   }
+  
+  maker(lat,lon){
+    this.markerLocation = new LatLng(lat,lon);
+    let markerOptions   : MarkerOptions = {
+      position: this.markerLocation,
+      title: this.title,
+      icon : "green"
+    }
+    this.map.addMarker(markerOptions).then((marker : Marker)=>{
+      marker.showInfoWindow();
+    }).catch(err => console.log(err));
+  }
+  
+
+  /*loadMap(){
+    let mapOptions: GoogleMapOptions = {
+      camera: {
+        target: {
+          lat: this.corDesLat,
+          lng: this.corDesLon
+        },
+        zoom: 14,
+        tilt: 30
+      }
+    };
+
+    this.map = this.googleMaps.create('map_canvas', mapOptions);
+
+    // Wait the MAP_READY before using any methods.
+    this.map.one(GoogleMapsEvent.MAP_READY)
+      .then(() => {
+        this.markerLocation = new LatLng(this.corDesLat, this.corDesLon);
+        console.log('Map is ready!');
+        
+        // Now you can use all methods safely.
+        this.map.addMarker({
+          title: this.title,
+          icon: 'green',
+          animation: 'DROP',
+          position: this.markerLocation,
+        })
+          .then(marker => {
+            marker.on(GoogleMapsEvent.MARKER_CLICK)
+              .subscribe(() => {
+                alert('clicked');
+              });
+          });
+
+      });
+  }
+
+  loadMap() {
+    let latitude = this.corDesLat;
+    let longitude = this.corDesLon;
+
+    // create LatLng object
+    let myLatLng = { lat: latitude, lng: longitude };
+
+    // create map
+    this.map = new google.maps.Map(this.map, {
+      center: myLatLng,
+      zoom: 14
+    });
+
+    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+      let marker = new google.maps.Marker({
+        position: myLatLng,
+        map: this.map,
+        title: this.title
+      });
+      this.map.classList.add('show-map');
+    });
+  }*/
 
   cerrar(){
     this.map=null;

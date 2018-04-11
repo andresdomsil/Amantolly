@@ -19,7 +19,7 @@ export class BusquedaPage {
   public productos: any[];
 
   constructor(public e: Events, public toast: ToastController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    var link = 'http://azahareseventos-slp.com/amantolly/controllers/productosController.php?op=4';
+    var link = 'http://sedely.mx/amantolly/controllers/productosController.php?op=4';
     http.get(link)
             .subscribe(data => {
               this.productos= data.json();
@@ -34,7 +34,7 @@ export class BusquedaPage {
   }
 
   addCarrito(id){
-    var link = 'http://azahareseventos-slp.com/amantolly/controllers/carritoControllersinSession.php?op=1&id='+id+'&cantidad=1';
+    var link = 'http://sedely.mx/amantolly/controllers/carritoControllersinSession.php?op=1&id='+id+'&cantidad=1';
     this.http.get(link)
             .subscribe(() => {
               let t= this.toast.create({

@@ -25,7 +25,7 @@ import { InfoProductoPage } from '../pages/info-producto/info-producto';
 import { InfoUserPage } from '../pages/info-user/info-user';
 import { InfoCompraPage } from '../pages/info-compra/info-compra';
 import { PagoPaypalPage } from '../pages/pago-paypal/pago-paypal';
-import { HttpModule, Http } from "@angular/http";
+import { HttpModule } from "@angular/http";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -37,6 +37,14 @@ import { Camera } from '@ionic-native/camera';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { PayPal } from '@ionic-native/paypal';
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
+import { GoogleCloudTranslateServiceProvider } from '../providers/google-cloud-translate-service/google-cloud-translate-service';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { ComprasPage } from '../pages/compras/compras'; 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -58,17 +66,19 @@ import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-visi
     InfoUserPage,
     InfoCompraPage,
     PagoPaypalPage,
+    ComprasPage,
     FormdireccionesPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [Http]
+        deps: [HttpClient]
       }
     }),
     IonicStorageModule.forRoot()
@@ -93,6 +103,7 @@ import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-visi
     InfoUserPage,
     InfoCompraPage,
     PagoPaypalPage,
+    ComprasPage,
     FormdireccionesPage
   ],
   providers: [
@@ -105,12 +116,11 @@ import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-visi
     Camera,
     MyApp,
     PayPal,
+    YoutubeVideoPlayer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleCloudVisionServiceProvider
+    GoogleCloudVisionServiceProvider,
+    GoogleCloudTranslateServiceProvider
   ]
 })
 export class AppModule {}
 
-export function createTranslateLoader(http: Http) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}

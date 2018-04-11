@@ -25,14 +25,20 @@
       <ion-slide  *ngFor="let img of imagenes">
         <img src="{{host}}/productos/{{img.url}}"/>
       </ion-slide>
-      <ion-slide>
-        <img src="assets/img/imagen-no-encontrada.png"/>
-      </ion-slide>
     </ion-slides>
     <h4>{{'DESCPROD' | translate}}</h4>
     <p>{{obj.desc_larga}}</p>
     <audio src="{{host}}/recursos/audio/1.mp3" *ngIf="obj.id==6" controls="controls"></audio>
+
+    <div *ngFor="let vid of video">
+      <button ion-button icon-left *ngIf="vid.url!=null" (click)="reproducir(vid.url)">
+        <ion-icon name="play"></ion-icon>
+        Video
+      </button>
+    </div>
+
     <h5><b>{{'PRECIO' | translate}}</b> ${{obj.precio_venta}}</h5>
+    <h5><b>{{'DISPPROD' | translate}}</b> {{obj.disponibilidad_regular}}</h5>
     <ion-item>
       <ion-label floating>{{'CANTPROD' | translate}}</ion-label>
       <ion-input type="number" min="1" [(ngModel)]="value"></ion-input>  

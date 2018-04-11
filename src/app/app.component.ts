@@ -19,6 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { ComprasPage } from '../pages/compras/compras';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class MyApp {
   public user: any;
   public correo: any;
   public txt_carrito: any;
-  public host="http://azahareseventos-slp.com/amantolly";
+  public host="http://sedely.mx/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   pages: Array<{title: string, component: any}>;
@@ -108,12 +109,18 @@ export class MyApp {
   }
 
   loginFB(){
-    this.fb.login(['email', 'public_profile']).then((response: FacebookLoginResponse)=>{
-      this.fb.api('me?fields=id,name,email,picture.width(360).height(360).as(picture_large)',[]).then(profile=>{ 
+    this.fb.login(['email', 'public_profile'])
+    .then((response: FacebookLoginResponse)=>{
+      this.fb.api('me?fields=id,name,email,picture.width(360).height(360).as(picture_large)',[])
+      .then(profile=>{ 
         this.storage.set('foto',profile['picture_large']['data']['url']);
         this.verificarExistencia(profile['email'],profile['name']);
+      }).catch(err=>{
+        alert('Error login facebook de api: '+err);
       });
-    });
+    }).catch(err=>{
+      alert('Error login facebook: '+err);
+    })
   }
 
   loginGP(){
@@ -123,7 +130,7 @@ export class MyApp {
       this.verificarExistencia(res.email,res.displayName);
     })
     .catch(err=>{
-      alert(err);
+      alert('Error login G+: '+err);
     });
   }
 
@@ -204,12 +211,13 @@ export class MyApp {
   }
 
   inicializarMenu(){
-    this.translate.get(["INICIO","PRODUCTOS","CARRITO","PEDIDOS","CONFIG","QUIENES SOMOS"]).subscribe(values=>{
+    this.translate.get(["INICIO","PRODUCTOS","CARRITO","PEDIDOS","CONFIG","QUIENES SOMOS","COMPRAS"]).subscribe(values=>{
       this.pages = [
         { title: values["INICIO"], component: InicioPage },
         { title: values["PRODUCTOS"], component: ListPage },
         { title: values["CARRITO"], component: CarritoPage },
         { title: values["PEDIDOS"], component: PedidosPage },
+        { title: values["COMPRAS"], component: ComprasPage },
         { title: values["CONFIG"], component: ConfigPage },
         { title: values["QUIENES SOMOS"], component: AboutPage }
       ];

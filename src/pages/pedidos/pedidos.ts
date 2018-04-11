@@ -1,5 +1,7 @@
+import { Storage } from '@ionic/storage';
+import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 /**
  * Generated class for the PedidosPage page.
@@ -14,7 +16,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PedidosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public compras: any[]=[];
+  public host="http://sedely.mx/amantolly";
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public e: Events,
+    public http: Http,
+    public storage: Storage
+  ) {
+    e.publish('addcarrito');
+    this.storage.get('iduser').then(val=>{
+      var link=this.host+'/controllers/comprasController.php?op=0&id='+val;
+      this.http.get(link)
+        .subscribe(data=>{
+          this.compras=data.json();
+      });
+    });
+    
+
   }
 
 }

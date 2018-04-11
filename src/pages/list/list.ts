@@ -9,12 +9,12 @@ import { InfoProductoPage } from '../info-producto/info-producto';
   templateUrl: 'list.html'
 })
 export class ListPage {
-  public host="http://azahareseventos-slp.com/amantolly";
+  public host="http://sedely.mx/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
   public productos: any[];
   public myInput: any;
   public cabeza:any;
-  public sub:any;
+  public sub='';
 
   constructor(
     public e: Events,
@@ -24,6 +24,7 @@ export class ListPage {
     public toast: ToastController,
     public translate: TranslateService
   ) {
+    this.sub=navParams.get('busqueda');
     this.translate.get('CABEZA1').subscribe(val=>{
       this.cabeza=val;
     });
@@ -32,6 +33,12 @@ export class ListPage {
             .subscribe(data => {
               this.productos=data.json();
             });
+  }
+
+  ionViewDidLoad() {
+    if(this.sub!=undefined){
+      this.buscar();
+    }
   }
 
   buscar(){

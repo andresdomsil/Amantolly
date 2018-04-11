@@ -23,7 +23,7 @@ export class FormdireccionesPage {
   public estado='';
   public pais='';
   public id_user='';
-  public host="http://azahareseventos-slp.com/amantolly";
+  public host="http://sedely.mx/amantolly";
 
   constructor(
     public navCtrl: NavController, 

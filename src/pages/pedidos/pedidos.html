@@ -16,7 +16,23 @@
 </ion-header>
 
 
-<ion-content padding>
-  <h3>Aun no hay pedidos registrados</h3>
-  <img src="assets/img/pedidos.png">
+<ion-content>
+  <ion-list>
+    <div *ngIf="compras.length==0">
+        <h3>Aun no hay pedidos registrados</h3>
+        <img src="assets/img/pedidos.png" style="opacity : .4;padding: 0 6em">
+    </div>
+    <div *ngIf="compras.length!=0">
+      <ion-list>
+        <button ion-item *ngFor="let car of compras" >
+            <ion-thumbnail item-left>
+              <img src="{{host}}/productos/{{car.url}}">
+            </ion-thumbnail>
+            <p>Cantidad: {{car.cantidad}}</p>
+            <h4>En proceso de entrega</h4>
+        </button>
+      </ion-list>
+    </div>
+    
+  </ion-list>
 </ion-content>

@@ -1,0 +1,4 @@
+ionic cordova build android --release
+cd platforms\android\build\outputs\apk\release
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore amantolly.jks android-release-unsigned.apk andres
+zipalign -v 4 android-release-unsigned.apk Amantolly.apk

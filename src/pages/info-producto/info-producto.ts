@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, Events } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { MapaPage } from '../mapa/mapa';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 /**
  * Generated class for the InfoProductoPage page.
@@ -24,7 +25,8 @@ export class InfoProductoPage {
   public titleLugar: any;
   public producto: any[];
   public imagenes: any[];
-  public host="http://azahareseventos-slp.com/amantolly";
+  public video: any[];
+  public host="http://sedely.mx/amantolly";
   public carr="/controllers/carritoControllersinSession.php";
 
   constructor(
@@ -32,23 +34,24 @@ export class InfoProductoPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public http: Http, 
-    public toast: ToastController
+    public toast: ToastController,
+    public youtube: YoutubeVideoPlayer //pHm0w95gxV0
   ) {
-    
+    this.inicio();
   }
 
-  ionViewDidLoad() {
+  reproducir(url){
+    this.youtube.openVideo(url);
+  }
+
+  inicio() {
     this.id=this.navParams.get("id");
     var link = this.host+'/controllers/productosController.php?op=2&id='+this.id;
     this.http.get(link)
             .subscribe(data => {
               this.producto= data.json();
               this.lugar(this.producto[0].origen_id);
-            });
-    link = this.host+'/controllers/productosController.php?op=3&id='+this.id;
-    this.http.get(link)
-            .subscribe(data => {
-              this.imagenes= data.json();
+              
             });
     
 
@@ -61,7 +64,17 @@ export class InfoProductoPage {
               this.lugarorigen= data.json();
               this.lat=this.lugarorigen[0].lat;
               this.lng=this.lugarorigen[0].lng;
-              this.titleLugar=this.lugarorigen[0].nombre;              
+              this.titleLugar=this.lugarorigen[0].nombre;  
+              var link1 = this.host+'/controllers/productosController.php?op=3&id='+this.id;
+              this.http.get(link1)
+                      .subscribe(data => {
+                        this.imagenes= data.json();
+                        var link2 = this.host+'/controllers/productosController.php?op=7&id='+this.id;
+                        this.http.get(link2)
+                                .subscribe(data => {
+                                  this.video=data.json();
+                                });
+                      });            
             });
   }
 
